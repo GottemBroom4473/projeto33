@@ -4,6 +4,9 @@
 //o furador sera parecido com o pentagono do projeto da aula da piramide colorida
 var balao1;
 var balaoB,balaoG,balaoP,balaoR;
+var estourador;
+var pedra;
+var polygon_img;
 var palmeiras = [];
 
 const Engine = Matter.Engine;
@@ -16,13 +19,20 @@ function preload(){
   balaoG = loadImage("green_balloon0.png");
   balaoP = loadImage("pink_balloon0.png");
   balaoR = loadImage("red_balloon0.png");
+
+polygon_img = loadImage("polygon.png");
 }
 
 function setup() {
   createCanvas(800,400);
+  engine = Engine.create();
+  world = engine.world;
+
+  estourador = new estilingue(this.poligon,{x:150,y:200});
 }
 
 function draw() {
+  Engine.update(engine);
   background("lightblue");  
   baloes();
 
@@ -30,6 +40,8 @@ function draw() {
   mostrar(palmeiras[i],i);  
   balao1.velocidade();
   }
+
+  estourador.display();
 }
 
 function baloes(){
@@ -39,25 +51,25 @@ function baloes(){
 if(frameCount%60 == 0){
 
   if(nume == 1){
-    balao1 = new balao(alposX,200,balaoB);
+    balao1 = new balao(alposX,50,balaoB);
     palmeiras.push(balao1);
     //Matter.Body.setVelocity(balao1.body,{x:0,y:5}); 
     
   }
   if(nume == 2){
-    balao1 = new balao(alposX,200,balaoG); 
+    balao1 = new balao(alposX,50,balaoG); 
     palmeiras.push(balao1);
     //Matter.Body.setVelocity(balao1.body,{x:0,y:5}); 
     
   }
   if(nume == 3){
-    balao1 = new balao(alposX,200,balaoP); 
+    balao1 = new balao(alposX,50,balaoP); 
     palmeiras.push(balao1);
     //Matter.Body.setVelocity(balao1.body,{x:0,y:5}); 
     
   }
   if(nume == 4){
-    balao1 = new balao(alposX,200,balaoR); 
+    balao1 = new balao(alposX,50,balaoR); 
     palmeiras.push(balao1);
     
 
