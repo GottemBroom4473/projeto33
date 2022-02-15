@@ -15,7 +15,7 @@ class estilingue{
             strokeWeight(6);
             stroke(rgb(56,27,10));
             line(this.body.bodyA.position.x - 20,this.body.bodyA.position.y,this.pointB.x + 10,this.pointB.y + 10);
-            line(this.body.bodyA.position.x -20,this.body.bodyA.position.y,this.pointB.x + 50,this.pointB.y + 15);
+            
         }
 
     }

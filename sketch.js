@@ -28,7 +28,10 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  estourador = new estilingue(this.poligon,{x:150,y:200});
+  poligon = Bodies.rectangle(30,30,100,100);
+  World.add(world,poligon);
+
+  estourador = new estilingue(this.poligon,{x:150,y:100});
 }
 
 function draw() {
@@ -36,10 +39,17 @@ function draw() {
   background("lightblue");  
   baloes();
 
+  image(polygon_img,poligon.position.x,poligon.position.y,50,50);
+
   for(var i = 0;i < palmeiras.length;i++){
   mostrar(palmeiras[i],i);  
   balao1.velocidade();
   }
+
+ 
+
+
+
 
   estourador.display();
 }
@@ -81,5 +91,17 @@ if(frameCount%60 == 0){
 
 function mostrar(balao,i){
 balao.display();
+}
 
+function mouseDragged(){
+  Matter.Body.setPosition(poligon.body,{x:mouseX,y:mouseY})
+}
+function mouseRelised(){
+poligon,fly();
+}
+
+function keyPressed(){
+  if(keyCode == 32){
+    estourador.attach(poligon.body);
+  }
 }
