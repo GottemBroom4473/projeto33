@@ -3,7 +3,7 @@ class estilingue{
         var config = {
             bodyA: bodyA,
             pointB: pointB,
-            stiffness: 0.5,
+            stiffness: 0.05,
             lenght: 10
         }
         this.body = Constraint.create(config);
