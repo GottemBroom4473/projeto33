@@ -31,7 +31,7 @@ function setup() {
   poligon = Bodies.rectangle(30,30,100,100);
   World.add(world,poligon);
 
-  estourador = new estilingue(this.poligon,{x:150,y:100});
+  estourador = new estilingue(this.poligon,{x:400,y:150});
 }
 
 function draw() {
@@ -94,14 +94,14 @@ balao.display();
 }
 
 function mouseDragged(){
-  Matter.Body.setPosition(poligon.body,{x:mouseX,y:mouseY})
+  Matter.Body.setPosition(this.poligon,{x:mouseX,y:mouseY})
 }
-function mouseRelised(){
-poligon,fly();
+function mouseReleased(){
+estourador.fly();
 }
 
 function keyPressed(){
   if(keyCode == 32){
-    estourador.attach(poligon.body);
+    estourador.attach(this.poligon);
   }
 }
