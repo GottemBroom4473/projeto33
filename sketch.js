@@ -7,6 +7,7 @@ var balaoB,balaoG,balaoP,balaoR;
 var estourador;
 var pedra;
 var polygon_img;
+var pontuacao = 0;
 var palmeiras = [];
 
 const Engine = Matter.Engine;
@@ -43,6 +44,10 @@ function draw() {
   background("lightblue");  
   baloes();
 
+  textSize(20);
+  strokeWeight(10);
+  text("pontuacao: "+pontuacao,100,25);
+
   image(polygon_img,poligon.position.x,poligon.position.y,50,50);
 
   for(var i = 0;i < palmeiras.length;i++){
@@ -50,14 +55,14 @@ function draw() {
   balao1.velocidade();
   }
 
-  for(var i = 0; i < palmeiras.length; i++){
+  /*for(var i = 0; i < palmeiras.length; i++){
      if(palmeiras[i] !== undefined){
        console.log(palmeiras[i].body.speed);
         if (palmeiras[i].body.velocity.x) {
              World.remove(world,palmeiras);
              }
              }
-             }
+             }*/
   estourador.display();
 }
 
@@ -97,7 +102,16 @@ if(frameCount%60 == 0){
 }
 
 function mostrar(balao,i){
+  if(balao){
 balao.display();
+if(balao.body.velocity.x>0 || balao.body.position.x>800){
+balao.remove(i);
+pontuacao++;
+}
+if( balao.body.position.y>400){
+balao.remove(i);
+}
+  }
 }
 
 function mouseDragged(){

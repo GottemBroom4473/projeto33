@@ -19,4 +19,8 @@ class balao{
         velocity.mult(0.5);
         Matter.Body.setVelocity(this.body,{x:0,y:velocity.y*2});
     }
+    remove(index){
+        World.remove(world,this.body);
+        delete palmeiras[index];
+    }
 }
